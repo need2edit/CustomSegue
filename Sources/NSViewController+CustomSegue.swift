@@ -41,17 +41,17 @@ public extension NSViewController {
         if let p = self.parent {
             switch mode {
             case .asSheet:
-                p.presentViewControllerAsSheet(self)
+                p.presentAsSheet(self)
             case .asModalWindow:
-                p.presentViewControllerAsModalWindow(self)
+                p.presentAsModalWindow(self)
             case .asPopover(let positioningRect, let positioningView, let preferredEdge, let behavior):
-                p.presentViewController(self, asPopoverRelativeTo: positioningRect, of : positioningView, preferredEdge: preferredEdge, behavior: behavior)
+                p.present(self, asPopoverRelativeTo: positioningRect, of : positioningView, preferredEdge: preferredEdge, behavior: behavior)
             case .transitionFrom(let fromViewController, let options):
                 p.transition(from: fromViewController, to: self, options: options, completionHandler: nil)
             case .animator(let animator):
-                p.presentViewController(self, animator: animator)
+                p.present(self, animator: animator)
             case .segue(let segueIdentifier):
-                p.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: segueIdentifier), sender: self)
+                p.performSegue(withIdentifier: segueIdentifier, sender: self)
             }
         }
     }

@@ -103,7 +103,7 @@ open class TransitionAnimator: NSObject, NSViewControllerPresentationAnimator {
         NSAnimationContext.runAnimationGroup(
             { [unowned self] context in
                 context.duration = self.duration
-                context.timingFunction =  CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                context.timingFunction =  CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
                 
                 viewController.view.animator().frame = destinationFrame
                 if self.transition.contains(NSViewController.TransitionOptions.crossfade) {
@@ -136,7 +136,7 @@ open class TransitionAnimator: NSObject, NSViewControllerPresentationAnimator {
         NSAnimationContext.runAnimationGroup(
             { [unowned self] context in
                 context.duration = self.duration
-                context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+                context.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
                 
                 viewController.view.animator().frame = destinationFrame
                 if self.transition.contains(NSViewController.TransitionOptions.crossfade) {
